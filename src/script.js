@@ -45,33 +45,30 @@ const participants = async () => {
   try {
     const participant = await Participant.create(
       {
-        firstname: "Elimane",
-        lastname: "Ba",
+        Name: "Elimane Ba",
         email: "Elimaneba@gmail.com",
         adress: {
           city: "Dakar",
           street: "Hlm",
         },
-        Courses: ["61b0e508752b3a123d2801d6", "61b0e508752b3a123d2801d7"],
+        Courses: [{label: "HTML", volume: 70}],
       },
       {
-        firstname: "Moussa",
-        lastname: "Diop",
+        Name: "Moussa Diop",
         email: "Moussajop@gmail.com",
         adress: {
           city: "Rufisque",
           street: "Arafat",
         },
-        Courses: ["61b20eedd26a0be6782b8147", "61b0e508752b3a123d2801d7"],
+        Courses: [{label: "HTML", volume: 70}],
       },
       {
-        firstname: "Elhadj",
-        lastname: "Sy",
-        email: "Moussajop@gmail.com",
+        Name: "Elhadj Sy",
+        email: "Sambasy@gmail.com",
         adress: {
           street: "LG",
         },
-        Courses: ["61b20eedd26a0be6782b8148", "61b0e508752b3a123d2801d7"],
+        Courses: [{label: "HTML", volume: 70}],
       }
     );
     console.log("Participants Creer : ");
@@ -83,8 +80,10 @@ const participants = async () => {
 
 const parts = async () => {
   try {
-    const part = await Participant.find('61b20eedd26a0be6782b8148');
-    console.log(part);
+    const part = await Participant.findOne({Name: 'Sy'}, 'Name -_id Courses')
+      console.log(part);
+    // console.log("Name: ");
+    
   } catch (e) {
     console.error(e.message);
   }
@@ -92,5 +91,6 @@ const parts = async () => {
 
 connecter();
 creer();
+// parts();
 participants();
-parts();
+

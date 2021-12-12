@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Course = require("./course");
 
 let myadress = ({
     city: {
@@ -11,12 +12,13 @@ let myadress = ({
     }
 });
 
+// let mycourses = ({
+//     label: String,
+//     volume: Number
+// })
+
 const ParticipantSchema = new mongoose.Schema({
-    firstname: {
-        type:String,
-        required: true,
-    },
-    lastname: {
+    Name: {
         type:String,
         required: true,
     },
@@ -25,7 +27,7 @@ const ParticipantSchema = new mongoose.Schema({
         required: true,
     },
     adress: myadress,
-    Courses: [mongoose.Types.ObjectId]
+    Courses: []
 
 })
 
