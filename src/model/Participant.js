@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Course = require("./course");
 
 let myadress = ({
     city: {
@@ -27,7 +26,7 @@ const ParticipantSchema = new mongoose.Schema({
         required: true,
     },
     adress: myadress,
-    Courses: []
+    courses: [mongoose.Types.ObjectId],
 
 })
 

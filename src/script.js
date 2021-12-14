@@ -51,7 +51,7 @@ const participants = async () => {
           city: "Dakar",
           street: "Hlm",
         },
-        Courses: [{label: "HTML", volume: 70}],
+        courses: ["61b76b1e93603a59a340182c", "61b76b1e93603a59a340182d", "61b76b1e93603a59a340182e", "61b76b1e93603a59a340182f"],
       },
       {
         Name: "Moussa Diop",
@@ -60,16 +60,8 @@ const participants = async () => {
           city: "Rufisque",
           street: "Arafat",
         },
-        Courses: [{label: "HTML", volume: 70}],
+        courses: ["61b76b1e93603a59a340182c", "61b76b1e93603a59a340182d", "61b76b1e93603a59a340182e", "61b76b1e93603a59a340182f"],
       },
-      {
-        Name: "Elhadj Sy",
-        email: "Sambasy@gmail.com",
-        adress: {
-          street: "LG",
-        },
-        Courses: [{label: "HTML", volume: 70}],
-      }
     );
     console.log("Participants Creer : ");
     console.log(participant);
@@ -78,11 +70,20 @@ const participants = async () => {
   }
 };
 
-const parts = async () => {
+// const Eli = async () => {
+//   try {
+//     const Elimane = await Participant.findOne({id:'61b76bec30f4630218fd3f7e'}, 'Name -_id courses')
+//       console.log(Elimane);
+    
+//   } catch (e) {
+//     console.error(e.message);
+//   }
+// };
+
+const mou = async () => {
   try {
-    const part = await Participant.findOne({Name: 'Sy'}, 'Name -_id Courses')
-      console.log(part);
-    // console.log("Name: ");
+    const moussa = await Participant.findOne({id:'61b771c1bf35757696b48244'}, 'Name -_id courses')
+      console.log(moussa);
     
   } catch (e) {
     console.error(e.message);
@@ -90,7 +91,8 @@ const parts = async () => {
 };
 
 connecter();
-creer();
-// parts();
-participants();
+// creer();
+// Eli();
+mou();
+// participants();
 
