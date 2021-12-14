@@ -51,7 +51,12 @@ const participants = async () => {
           city: "Dakar",
           street: "Hlm",
         },
-        courses: ["61b76b1e93603a59a340182c", "61b76b1e93603a59a340182d", "61b76b1e93603a59a340182e", "61b76b1e93603a59a340182f"],
+        courses: [
+          "61b76b1e93603a59a340182c",
+          "61b76b1e93603a59a340182d",
+          "61b76b1e93603a59a340182e",
+          "61b76b1e93603a59a340182f",
+        ],
       },
       {
         Name: "Moussa Diop",
@@ -60,8 +65,13 @@ const participants = async () => {
           city: "Rufisque",
           street: "Arafat",
         },
-        courses: ["61b76b1e93603a59a340182c", "61b76b1e93603a59a340182d", "61b76b1e93603a59a340182e", "61b76b1e93603a59a340182f"],
-      },
+        courses: [
+          "61b76b1e93603a59a340182c",
+          "61b76b1e93603a59a340182d",
+          "61b76b1e93603a59a340182e",
+          "61b76b1e93603a59a340182f",
+        ],
+      }
     );
     console.log("Participants Creer : ");
     console.log(participant);
@@ -70,21 +80,12 @@ const participants = async () => {
   }
 };
 
-// const Eli = async () => {
-//   try {
-//     const Elimane = await Participant.findOne({id:'61b76bec30f4630218fd3f7e'}, 'Name -_id courses')
-//       console.log(Elimane);
-    
-//   } catch (e) {
-//     console.error(e.message);
-//   }
-// };
-
-const mou = async () => {
+const Eli = async () => {
   try {
-    const moussa = await Participant.findOne({id:'61b771c1bf35757696b48244'}, 'Name -_id courses')
-      console.log(moussa);
-    
+  const Elimane = await Participant.find({ id: "61b76bec30f4630218fd3f7e" } )
+      .where("courses")
+      .select(" Name -_id courses")
+    console.log(Elimane);
   } catch (e) {
     console.error(e.message);
   }
@@ -92,7 +93,6 @@ const mou = async () => {
 
 connecter();
 // creer();
-// Eli();
-mou();
+Eli();
+// mou();
 // participants();
-
