@@ -1,0 +1,15 @@
+POST http://localhost:3000/participants
+Accept: application/json
+Content-Type: application/json
+
+  {
+        "FirstName": "Elimane",
+        "LastName": "Ba",
+        "email": "Elimaneba@gmail.com",
+        "courses": [
+          "61b76b1e93603a59a340182c",
+        ],
+      }
+###
+
+GET http://localhost:3000/courses/61b76b1e93603a59a340182f

@@ -17,7 +17,11 @@ let myadress = ({
 // })
 
 const ParticipantSchema = new mongoose.Schema({
-    Name: {
+    FirstName: {
+        type:String,
+        required: true,
+    },
+    LastName: {
         type:String,
         required: true,
     },
@@ -26,7 +30,12 @@ const ParticipantSchema = new mongoose.Schema({
         required: true,
     },
     adress: myadress,
-    courses: [mongoose.Types.ObjectId],
+    courses: [
+        {
+            type: mongoose.Types.ObjectId, 
+            ref: 'Course'
+        }
+    ]
 
 })
 

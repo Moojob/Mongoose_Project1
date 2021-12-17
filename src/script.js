@@ -45,7 +45,8 @@ const participants = async () => {
   try {
     const participant = await Participant.create(
       {
-        Name: "Elimane Ba",
+        FirstName: "Elimane",
+        LastName: "Ba",
         email: "Elimaneba@gmail.com",
         adress: {
           city: "Dakar",
@@ -55,22 +56,17 @@ const participants = async () => {
           "61b76b1e93603a59a340182c",
           "61b76b1e93603a59a340182d",
           "61b76b1e93603a59a340182e",
-          "61b76b1e93603a59a340182f",
         ],
       },
       {
-        Name: "Moussa Diop",
+        FirstName: "Moussa ",
+        LastName: "Diop",
         email: "Moussajop@gmail.com",
         adress: {
           city: "Rufisque",
           street: "Arafat",
         },
-        courses: [
-          "61b76b1e93603a59a340182c",
-          "61b76b1e93603a59a340182d",
-          "61b76b1e93603a59a340182e",
-          "61b76b1e93603a59a340182f",
-        ],
+        courses: ["61b76b1e93603a59a340182c", "61b76b1e93603a59a340182f"],
       }
     );
     console.log("Participants Creer : ");
@@ -80,19 +76,34 @@ const participants = async () => {
   }
 };
 
-const Eli = async () => {
-  try {
-  const Elimane = await Participant.find({ id: "61b76bec30f4630218fd3f7e" } )
-      .where("courses")
-      .select(" Name -_id courses")
-    console.log(Elimane);
-  } catch (e) {
-    console.error(e.message);
-  }
-};
-
+//  const part = async () => {
+//       try {
+//           let req = await Participant.find({})
+//           let arrCourseId = [];
+//           // console.log(req);
+//           for (let j = 0; j < req.length; j++) {
+//               arrCourseId.push(req[j]._id);
+//           }
+//           console.log(arrCourseId);
+//           for (let k = 0; k < arrCourseId.length; k++) {
+//               let vol = 0;
+//               let label = [];
+//               let array = (await Participant(arrCourseId[k])).courses;
+//               for (let i = 0; i < array.length; i++) {
+//                   const element = array[i];
+//                   label.push((await CourseModel(element)).label)
+//                   vol.push(await Course(element)).volume;
+//               }
+//               console.log('________________________Student list_____________________________');
+//               console.log("       Student : " + req[k].FirstName + " " + req[k].LastName);
+//               console.log("       label : " + label);
+//               console.log("       Volume : " + vol);
+//           }
+//       } catch (error) {
+//           console.log(error.message)
+//       }
+//   }
 connecter();
 // creer();
-Eli();
-// mou();
-// participants();
+// part();
+participants();
