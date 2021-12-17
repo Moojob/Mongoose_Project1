@@ -76,34 +76,34 @@ const participants = async () => {
   }
 };
 
-//  const part = async () => {
-//       try {
-//           let req = await Participant.find({})
-//           let arrCourseId = [];
-//           // console.log(req);
-//           for (let j = 0; j < req.length; j++) {
-//               arrCourseId.push(req[j]._id);
-//           }
-//           console.log(arrCourseId);
-//           for (let k = 0; k < arrCourseId.length; k++) {
-//               let vol = 0;
-//               let label = [];
-//               let array = (await Participant(arrCourseId[k])).courses;
-//               for (let i = 0; i < array.length; i++) {
-//                   const element = array[i];
-//                   label.push((await CourseModel(element)).label)
-//                   vol.push(await Course(element)).volume;
-//               }
-//               console.log('________________________Student list_____________________________');
-//               console.log("       Student : " + req[k].FirstName + " " + req[k].LastName);
-//               console.log("       label : " + label);
-//               console.log("       Volume : " + vol);
-//           }
-//       } catch (error) {
-//           console.log(error.message)
-//       }
-//   }
+const courseBystudents = async(req, res) =>{
+  try {
+      const participants = await Participant.find()
+      const courses = await Course.find()
+      const result = participants.map(p => {
+          let rp = {}; 
+          rp.fullname = p.FirstName + " " + p.LastName;
+          rp.totalhours = 0;
+          rp.courses = p.courses.map(c => {
+              let rc = {};
+              const cours = courses.find(element => element._id.equals(c));
+              if (cours){
+                  rc.label = cours.label;
+                  rc.volume = cours.volume;
+                  rp.totalhours += cours.volume;
+              }
+             
+              console.log(rc); 
+          })
+          console.log(rp); ;
+      })
+      res.json(result)
+  } catch (error) {
+      
+  }
+}
+
 connecter();
 // creer();
-// part();
-participants();
+courseBystudents();
+// participants();
